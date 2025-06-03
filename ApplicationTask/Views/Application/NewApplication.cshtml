@@ -1,0 +1,775 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewApplication</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .container{
+            border:1px solid;
+        }
+    </style>
+    <script>
+        var qualifications=[];
+        var fimalymember=[];
+        var language=[];
+        var address = [];
+        var certification=[];
+        var seminar=[];
+        var project=[];
+        var achivments=[];
+        var reference=[];
+          function AddQualification(){
+               var qname=$("#txtderee").val();
+               var course=$("#txtcourse").val();
+               var programtype=$("#txtprogramtype").val();
+               var elective=$("#txtelective").val();
+               var collegename=$("#txtcollagename").val();
+               var universityName=$("#txtunversityname").val();
+               var startdate=$("#txtstartdate").val();
+               var enddate=$("#txtenddate").val();
+               var percentage=$("#txtpercentage").val();
+               var garducationdate=$("#txtgraduction").val();
+               var ap={"Degree":qname,"Course":course,"ProgramType":programtype,"Elective":elective,"CollegeName":collegename,"UniversityName":universityName,"StartDate":startdate,"EndDate":enddate,"Percentage":percentage,"GraduationDate":garducationdate}
+               qualifications.push(ap);
+               ClearQualificationFileds();
+               Fillqualifications();
+          }
+          function ClearQualificationFileds(){
+               $("#txtderee").val("");
+               $("#txtcourse").val("");
+               $("#txtprogramtype").val("");
+               $("#txtelective").val("");
+               $("#txtcollagename").val("");
+               $("#txtunversityname").val("");
+               $("#txtstartdate").val("");
+               $("#txtpercentage").val("");
+               $("#txtgraduction").val("");
+          }
+           function  Fillqualifications(){
+                $("#tblqualification").empty();
+                $.each(qualifications,function(i,d){
+                     $("#tblqualification").append("<tr><td>"+d.Degree+"</td><td>"+d.Course+"</td><td>"+d.ProgramType+"</td><td>"+d.Elective+"</td><td>"+d.CollegeName+"</td><td>"+d.UniversityName+"</td><td>"+d.StartDate+"</td><td>"+d.EndDate+"</td><td>"+d.Percentage+"</td><td>"+d.GraduationDate+"</td></tr>");
+                })
+           }
+            function Addfamily(){
+                var ap={
+                      "Name":$("#txtname").val(),
+                      "Relationship":$("#txtrelationship").val(),
+                      "Dob":$("#txtdbo").val(),
+                      "Age":$("#txtage").val()
+                };
+                fimalymember.push(ap);
+                ClearfimalymemberFields();
+                FillfimalymemberFields();
+            }
+             function FillfimalymemberFields(){
+                  $("#tblfamilymember").empty();
+                   $.each(fimalymember,function(i,d){
+                   $("#tblfamilymember").append("<tr><td>"+d.Name+"</td><td>"+d.Relationship+"</td><td>"+d.Dob+"</td><td>"+d.Age+"</td></tr>");
+                   })
+             }
+             function ClearfimalymemberFields(){
+             $("#txtname").val("");
+             $("#txtrelationship").val("");
+             $("#txtdbo").val("");
+             $("#txtage").val("");
+             }
+             function AddLanguage(){
+             var ap={
+              "LanguageName":$("#txtlanguage").val(),
+              "CanRead":$("#txtread").val(),
+              "CanWrite":$("#txtwrite").val(),
+              "CanSpeak":$("#txtspeak").val()
+         };
+         language.push(ap);
+         ClearLanguageFeilds();
+         FillLanguageFeilds();
+        }
+        function ClearLanguageFeilds(){
+             $("#txtlanguage").val("");
+             $("#txtread").val("");
+             $("#txtwrite").val("");
+             $("#txtspeak").val("");
+         }
+         function FillLanguageFeilds(){
+             $("#tbllanguage").empty();
+             $.each(language,function(i,d){
+                   $("#tbllanguage").append("<tr><td>"+d.LanguageName+"</td><td>"+d.CanRead+"</td><td>"+d.CanWrite+"</td><td>"+d.CanSpeak+"</td></tr>")
+             })
+         }
+          function AddAddress(){
+             var ap={
+                  "HouseNo":$("#txthouse").val(),
+                  "Locality":$("#txtlocality").val(),
+                  "City":$("#txtcity").val(),
+                  "State":$("#txtstate").val(),
+                  "Pincode":$("#txtpincode").val(),
+                  "PeriodOfStay":$("#txtperiodofstay").val()
+             };
+             address.push(ap);
+             Clearaddressfeilds();
+             Filladdressfeilds();
+         }
+         function Filladdressfeilds(){
+             $("#tbladdress").empty();
+             $.each(address,function(i,d){
+                 $("#tbladdress").append("<tr><td>"+d.HouseNo+"</td><td>"+d.Locality+"</td><td>"+d.City+"</td><td>"+d.State+"</td><td>"+d.Pincode+"</td><td>"+d.PeriodOfStay+"</td></tr>")
+             })
+         }
+         function Clearaddressfeilds(){
+             $("#txthouse").val("");
+             $("#txtlocality").val("");
+             $("#txtcity").val("");
+             $("#txtstate").val("");
+             $("#txtpincode").val("")
+             $("#txtperiodofstay").val("");
+         }
+         function AddCertifications(){
+             var ap={
+                 "ProgramName":$("#txtprogramname").val(),
+                 "Institute":$("#txtinstitute").val(),
+                 "FromDate":$("#txtcerformdate").val(),
+                 "ToDate":$("#txtcerToDates").val(),
+                 "Percentage":$("#txtcerpercenatee").val(),
+                 "Division":$("#txtdivision").val()
+             }
+             certification.push(ap);
+             ClearCertificationFeilds();
+             FillCertificationFeilds();
+         }
+         function FillCertificationFeilds(){
+             $("#tblcertifications").empty();
+              $.each(certification, function(i, d){
+               $("#tblcertifications").append("<tr><td>" + d.ProgramName + "</td><td>" + d.Institute + "</td><td>" + d.FromDate + "</td><td>" + d.ToDate + "</td><td>" + d.Percentage + "</td><td>" + d.Division + "</td></tr>");
+         });
+         }
+         function ClearCertificationFeilds(){
+             $("#txtprogramname").val("");
+             $("#txtinstitute").val("");
+             $("#txtcerformdate").val("");
+             $("#txtcerpercenatee").val("");
+             $("#txtdivision").val("")
+         }
+         function AddSeminar(){
+             var ap={
+                  "Title":$("#txtseminartitle").val(),
+                  "ConductedBy":$("#txtconductedby").val(),
+                  "FromDate":$("#txtseminarfdate").val(),
+                  "ToDate":$("#txtseminiartdate").val(),
+             };
+             seminar.push(ap);
+             Clearseminarfeilds();
+             Fillseminarfeilds();
+         }
+         function Fillseminarfeilds(){
+              $("#tblseminar").empty();
+              $.each(seminar, function(i, d){
+              $("#tblseminar").append("<tr><td>" + d.Title + "</td><td>" + d.ConductedBy + "</td><td>" + d.FromDate + "</td><td>" + d.ToDate + "</td></tr>");
+         });
+         }
+         function Clearseminarfeilds(){
+             $("#txtseminartitle").val("");
+             $("#txtconductedby").val("");
+             $("#txtseminarfdate").val("");
+             $("#txtseminiartdate").val("");
+         }
+         function AddProject(){
+             var ap={
+                 "Title": $("#txtprojecttitle").val(),
+                 "Company":$("#txtcompanyname").val(),
+                 "Client":$("#txtclient").val(),
+                 "SkillsUsed":$("#txtskillsused").val(),
+                 "Platform":$("#txtplatform").val(),
+                 "TeamSize":$("#txtprojectteamsize").val(),
+                 "Role":$("#txtprojectrole").val()
+             };
+             project.push(ap);
+             Clearprojectfeilds();
+             Fillprojectfeilds();
+         }
+         function Fillprojectfeilds(){
+             $("#tblprojects").empty();
+             $.each(project,function(i,d){
+                 $("#tblprojects").append("<tr><td>" + d.Title + "</td><td>" + d.Company+ "</td><td>" + d.Client + "</td><td>" + d.SkillsUsed + "</td><td>" + d.Platform + "</td><td>" + d.TeamSize + "</td><td>" + d.Role + "</td></tr>");
+             });
+         }
+         function Clearprojectfeilds(){
+             $("#txtprojecttitle").val("");
+             $("#txtcompanyname").val("");
+             $("#txtclient").val("");
+             $("#txtskillsused").val("");
+             $("#txtplatform").val("");
+             $("#txtprojectteamsize").val("");
+             $("#txtprojectrole").val("");
+         }
+         function AddAchievements(){
+            var ap = {
+                "Description": $("#txtdescription").val(),
+                "Year": $("#txtyear").val()
+            };
+            achivments.push(ap);
+            ClearAchievementsFields();
+            FillAchievementsFields();
+        }
+        function ClearAchievementsFields(){
+              $("#txtdescription").val("");
+              $("#txtyear").val("");
+         }
+         function FillAchievementsFields(){
+              $("#tblachievements").empty();
+             $.each(achivments,function(i,d){
+                 $("#tblachievements").append("<tr><td>" + d.Description + "</td><td>" + d.Year + "</td></tr>");
+             });
+         }
+         function AddReference(){
+             var ap={
+                 "Name":$("#txtnamedesig").val(),
+                 "CurrentCompany":$("#txtrefcompany").val(),
+                 "Email":$("#txtrefemail").val(),
+                 "Phone":$("#txtcontactdetails").val()
+             };
+             reference.push(ap);
+             ClearReferencesFeilds();
+             FillReferencesFeilds();
+         }
+         function FillReferencesFeilds(){
+              $("#tblreference").empty();
+             $.each(reference,function(i,d){
+                 $("#tblreference").append("<tr><td>" + d.Name + "</td><td>" + d.CurrentCompany + "</td><td>" + d.Email + "</td><td>" + d.Phone + "</td></tr>");
+             });
+         }
+         function SubmitData(){
+             var ap={
+                  "Name": $("#textname").val(),
+                  "FatherName": $("#txtfname").val(),
+                  "Nationality":$("#txtnatoonlity").val(),
+                  "SocialSecurityNumber":$("#txtsocial").val(),
+                  "Sex":$("#txtsex").val(),
+                  "MaritalStatus":$("#txtmarital").val(),
+                  "BirthDate":$("#textbirthdate").val(),
+                  "PanCardNumber":$("#txtpan").val(),
+                  "EmailAddress":$("#txtemail").val(),
+                  "PhoneNo":$("#txtphone").val(),
+                  "VisaStatus":$("#txtvisa").val(),
+                  "WillingTarvalUsa":$("#txtwilling").val(),
+                  "PassportNumber":$("#txtpassport").val(),
+                  "PassportIssu":$("#txtpassportissudate").val(),
+                  "PassportExpireDate":$("#txtexpdate").val(),
+                  "Educations":qualifications,
+                  "FamilyMembers":fimalymember,
+                  "Languages":language,
+                  "Addresses": address,
+                  "Certifications":certification,
+                  "Projects":project,
+                  "Achievements": achivments,
+                  "Seminars":seminar,
+                  "TblReferences":reference
+            };
+            $.ajax({
+            url: '/Application/AddNewApplication',
+            method: 'POST',            
+            data: ap,
+            success: function (resp) {
+                alert(resp);
+            } 
+        })
+     }
+     function ClearReferencesFeilds(){
+             $("#txtnamedesig").val("");
+             $("#txtrefcompany").val("");
+             $("#txtrefemail").val("");
+             $("#txtcontactdetails").val("");
+         }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="text-center pb-3">Application Form</h5>
+            </div>
+        </div>
+        <div class="row">
+            <pre>
+                Thank you for the interest shown in MNJ Software. Please take a few minutes of your time to
+                fill in the following details to help us understand your technical skills and personal
+                competencies better.                   
+            </pre>
+        </div>
+        <div class="row ">
+
+            <div class="col-md-8">
+                <pre>
+              Please keep in mind the following when filling up the form:
+
+               1.Fill in the boxes in the application blank in bold capital  
+                 Letters unless the content is of a descriptive nature.
+
+               2.Fill in the details according to the format mentioned 
+                 For the date and day.  
+               </pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td> Name</td>
+                        <td> <input type="text" class="form-control" id="textname" placeholder="Enter First Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Father’s Name:</td>
+                        <td><input type="text" class="form-control" id="txtfname" placeholder="Enter Eour Father Name" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Nationality: </td>
+                        <td><input type="text" class="form-control" id="txtnatoonlity" /></td>
+
+                        <td>Social Security Number (if applicable):</td>
+                        <td><input type="text" class="form-control" id="txtsocial" /></td>
+                    </tr>
+                    <tr>
+                        <td>Sex:</td>
+                        <td><input type="text" class="form-control" id="txtsex" /></td>
+
+                        <td>Marital Status:</td>
+                        <td><input type="text" class="form-control" id="txtmarital"></td>
+                    </tr>
+                    <tr>
+                        <td>BirthDate</td>
+                        <td><input type="date" class="form-control" id="textbirthdate" /></td>
+
+                        <td>Pan Card Number</td>
+                        <td><input type="text" class="form-control" id="txtpan" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email Address</td>
+                        <td><input type="text" class="form-control" id="txtemail" /></td>
+
+                        <td>Alternate Email Address</td>
+                        <td><input type="text" class="form-control" id="txtalternateemail" /></td>
+                    </tr>
+                    <tr>
+                        <td>Phone No</td>
+                        <td><input type="text" class="form-control" id="txtphone" /></td>
+
+                        <td>Visa Status</td>
+                        <td><input type="text" class="form-control" id="txtvisa" /></td>
+                    </tr>
+                    <tr>
+                        <td>Willing Tarval USA</td>
+                        <td><input type="text" class="form-control" id="txtwilling" /></td>
+
+                        <td>PassportNumber</td>
+                        <td><input type="text" class="form-control" id="txtpassport" /></td>
+                    </tr>
+                    <tr>
+                        <td>Passport Issu Date</td>
+                        <td><input type="date" class="form-control" id="txtpassportissudate" /></td>
+
+                        <td>Passport Expire Date</td>
+                        <td><input type="date" class="form-control" id="txtexpdate" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h6>Address</h6>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>HouseNo</th>
+                        <th>Locality</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Pincode</th>
+                        <th>PeriodOfStay</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbladdress"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>HouseNo</label>
+                            <input type="text" id="txthouse" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Locality</label>
+                            <input type="text" id="txtlocality" class="form-control" />
+                        </td>
+                        <td>
+                            <label>City</label>
+                            <input type="text" id="txtcity" class="form-control" />
+                        </td>
+                        <td>
+                            <label>State</label>
+                            <input type="text" id="txtstate" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Pincode</label>
+                            <input type="text" id="txtpincode" class="form-control" />
+                        </td>
+                        <td>
+                            <label>PeriodOfStay</label>
+                            <input type="text" id="txtperiodofstay" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddAddress()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <h5>Languages</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>LanguageName</th>
+                        <th>CanRead</th>
+                        <th>CanWrite</th>
+                        <th>CanSpeak</th>
+                        <th>Action</th>
+                </thead>
+                <tbody id="tbllanguage"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>LanguageName</label>
+                            <input type="text" id="txtlanguage" class="form-control" />
+                        </td>
+                        <td>
+                            <label>CanRead</label>
+                            <input type="text" id="txtread" class="form-control" />
+                        </td>
+                        <td>
+                            <label>CanWrite</label>
+                            <input type="text" id="txtwrite" class="form-control" />
+                        </td>
+                        <td>
+                            <label>CanSpeak</label>
+                            <input type="text" id="txtspeak" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddLanguage()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>Family Members</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Relationship</th>
+                        <th>DOB</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tblfamilymember"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>Name</label>
+                            <input type="text" id="txtname" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Relationship</label>
+                            <input type="text" id="txtrelationship" class="form-control" />
+                        </td>
+                        <td>
+                            <label>DOB</label>
+                            <input type="date" id="txtdbo" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Age</label>
+                            <input type="text" id="txtage" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="Addfamily()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>Education</h5>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Degree</th>
+                        <th>Course</th>
+                        <th>ProgramType</th>
+                        <th>Elective</th>
+                        <th>CollegeName</th>
+                        <th>UniversityName</th>
+                        <th>StartDate</th>
+                        <th>EndDate</th>
+                        <th>Percentage</th>
+                        <th>GraducationDate</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tblqualification"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>Degree</label>
+                            <input type="text" id="txtderee" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Course</label>
+                            <input type="text" id="txtcourse" class="form-control" />
+                        </td>
+                        <td>
+                            <label>ProgramName</label>
+                            <input type="text" id="txtprogramtype" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Elective</label>
+                            <input type="text" id="txtelective" class="form-control" />
+                        </td>
+                        <td>
+                            <label>CollegeName</label>
+                            <input type="text" id="txtcollagename" class="form-control" />
+                        </td>
+                        <td>
+                            <label>UnversityName</label>
+                            <input type="text" id="txtunversityname" class="form-control" />
+                        </td>
+                        <td>
+                            <label>StartDate</label>
+                            <input type="date" id="txtstartdate" class="form-control" />
+                        </td>
+                        <td>
+                            <label>EndDate</label>
+                            <input type="date" id="txtenddate" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Percentage</label>
+                            <input type="text" id="txtpercentage" class="form-control" />
+                        </td>
+                        <td>
+                            <label>GraducationDate</label>
+                            <input type="date" id="txtgraduction" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddQualification()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>Certifications</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ProgramName</th>
+                        <th>Institute</th>
+                        <th>FromDate</th>
+                        <th>ToDate</th>
+                        <th>Percentage</th>
+                        <th>Division</th>
+                        <th>Action</th>
+                </thead>
+                <tbody id="tblcertifications"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>ProgramName</label>
+                            <input type="text" id="txtprogramname" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Institute</label>
+                            <input type="text" id="txtinstitute" class="form-control" />
+                        </td>
+                        <td>
+                            <label>FromDate</label>
+                            <input type="date" id="txtcerformdate" class="form-control" />
+                        </td>
+                        <td>
+                            <label>ToDate</label>
+                            <input type="date" id="txtcerToDates" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Percentage</label>
+                            <input type="text" id="txtcerpercenatee" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Division</label>
+                            <input type="text" id="txtdivision" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddCertifications()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>Seminars</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>ConductedBy</th>
+                        <th>FromDate</th>
+                        <th>ToDate</th>
+                        <th>Action</th>
+                </thead>
+                <tbody id="tblseminar"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>Title</label>
+                            <input type="text" id="txtseminartitle" class="form-control" />
+                        </td>
+                        <td>
+                            <label>ConductedBy</label>
+                            <input type="text" id="txtconductedby" class="form-control" />
+                        </td>
+                        <td>
+                            <label>FromDate</label>
+                            <input type="date" id="txtseminarfdate" class="form-control" />
+                        </td>
+                        <td>
+                            <label>ToDate</label>
+                            <input type="date" id="txtseminiartdate" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddSeminar()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>Achievements</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Year</th>
+                        <th>Action</th>
+                </thead>
+                <tbody id="tblachievements"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>Description</label>
+                            <input type="text" id="txtdescription" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Year</label>
+                            <input type="text" id="txtyear" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddAchievements()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>Projects</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Company</th>
+                        <th>Client</th>
+                        <th>SkillsUsed</th>
+                        <th>Platform</th>
+                        <th>TeamSize</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                </thead>
+                <tbody id="tblprojects"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>Title</label>
+                            <input type="text" id="txtprojecttitle" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Company</label>
+                            <input type="text" id="txtcompanyname" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Client</label>
+                            <input type="text" id="txtclient" class="form-control" />
+                        </td>
+                        <td>
+                            <label>SkillsUsed</label>
+                            <input type="text" id="txtskillsused" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Platform</label>
+                            <input type="text" id="txtplatform" class="form-control" />
+                        </td>
+                        <td>
+                            <label>TeamSize</label>
+                            <input type="text" id="txtprojectteamsize" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Role</label>
+                            <input type="text" id="txtprojectrole" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddProject()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h5>References</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name & Designation</th>
+                        <th>Current Company</th>
+                        <th>Address</th>
+                        <th>Contact Details</th>
+                        <th>Action</th>
+                </thead>
+                <tbody id="tblreference"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <label>Name & Designation</label>
+                            <input type="text" id="txtnamedesig" class="form-control" />
+                        </td>
+                        <td>
+                            <label>CurrentCompany</label>
+                            <input type="text" id="txtrefcompany" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Email</label>
+                            <input type="text" id="txtrefemail" class="form-control" />
+                        </td>
+                        <td>
+                            <label>Contact Details</label>
+                            <input type="text" id="txtcontactdetails" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" value="+" onclick="AddReference()" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-12 d-flex justify-content-center">
+                <input type="button" value="Submit" onclick="SubmitData()" class="btn-primary"  >                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
