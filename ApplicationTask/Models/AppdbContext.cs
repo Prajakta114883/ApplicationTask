@@ -23,17 +23,19 @@ public partial class AppdbContext : DbContext
 
     public virtual DbSet<Certification> Certifications { get; set; }
 
+    public virtual DbSet<Contact> Contacts { get; set; }
+
     public virtual DbSet<Education> Educations { get; set; }
 
     public virtual DbSet<FamilyMember> FamilyMembers { get; set; }
 
     public virtual DbSet<Language> Languages { get; set; }
 
+    public virtual DbSet<PassportDetail> PassportDetails { get; set; }
+
     public virtual DbSet<Project> Projects { get; set; }
 
     public virtual DbSet<Seminar> Seminars { get; set; }
-
-    public virtual DbSet<TblReference> TblReferences { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -110,11 +112,6 @@ public partial class AppdbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("Pan_Card_Number");
-            entity.Property(e => e.PassportExpireDate).HasColumnName("passport_Expire_Date");
-            entity.Property(e => e.PassportIssu).HasColumnName("Passport_Issu");
-            entity.Property(e => e.PassportNumber)
-                .HasMaxLength(50)
-                .IsUnicode(false);
             entity.Property(e => e.PhoneNo)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -126,14 +123,6 @@ public partial class AppdbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("Social_Security_Number");
-            entity.Property(e => e.VisaStatus)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("Visa_Status");
-            entity.Property(e => e.WillingTarvalUsa)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("Willing_Tarval_USA");
         });
 
         modelBuilder.Entity<Certification>(entity =>
@@ -151,6 +140,30 @@ public partial class AppdbContext : DbContext
             entity.HasOne(d => d.Application).WithMany(p => p.Certifications)
                 .HasForeignKey(d => d.ApplicationId)
                 .HasConstraintName("fkcerkid");
+        });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId).HasName("PK__contact__5C66259B368E22FE");
+
+            entity.ToTable("contact");
+
+            entity.Property(e => e.CurrentCompany)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Phone)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Applicant).WithMany(p => p.Contacts)
+                .HasForeignKey(d => d.ApplicantId)
+                .HasConstraintName("fkrefivmid");
         });
 
         modelBuilder.Entity<Education>(entity =>
@@ -224,6 +237,32 @@ public partial class AppdbContext : DbContext
                 .HasConstraintName("fkappid");
         });
 
+        modelBuilder.Entity<PassportDetail>(entity =>
+        {
+            entity.HasKey(e => e.PassportId).HasName("PK__Passport__D09A45B6A6298BF7");
+
+            entity.ToTable("Passport_details");
+
+            entity.Property(e => e.PassportId).HasColumnName("passportId");
+            entity.Property(e => e.PassportExpireDate).HasColumnName("passport_Expire_Date");
+            entity.Property(e => e.PassportIssu)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("Passport_Issu");
+            entity.Property(e => e.VisaStatus)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("Visa_Status");
+            entity.Property(e => e.WillingTarvalUsa)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("Willing_Tarval_USA");
+
+            entity.HasOne(d => d.Address).WithMany(p => p.PassportDetails)
+                .HasForeignKey(d => d.AddressId)
+                .HasConstraintName("fkapid");
+        });
+
         modelBuilder.Entity<Project>(entity =>
         {
             entity.HasKey(e => e.ProjectId).HasName("PK__Projects__761ABEF0A1263D82");
@@ -266,30 +305,6 @@ public partial class AppdbContext : DbContext
             entity.HasOne(d => d.Application).WithMany(p => p.Seminars)
                 .HasForeignKey(d => d.ApplicationId)
                 .HasConstraintName("fksemirkid");
-        });
-
-        modelBuilder.Entity<TblReference>(entity =>
-        {
-            entity.HasKey(e => e.ReferenceId).HasName("PK__tblRefer__E1A99A19DE6631EF");
-
-            entity.ToTable("tblReference");
-
-            entity.Property(e => e.CurrentCompany)
-                .HasMaxLength(100)
-                .IsUnicode(false);
-            entity.Property(e => e.Email)
-                .HasMaxLength(100)
-                .IsUnicode(false);
-            entity.Property(e => e.Name)
-                .HasMaxLength(100)
-                .IsUnicode(false);
-            entity.Property(e => e.Phone)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-
-            entity.HasOne(d => d.Application).WithMany(p => p.TblReferences)
-                .HasForeignKey(d => d.ApplicationId)
-                .HasConstraintName("fkrefkid");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -22,4 +22,6 @@ public partial class Address
     public int? ApplicationId { get; set; }
 
     public virtual Applicant? Application { get; set; }
+
+    public virtual ICollection<PassportDetail> PassportDetails { get; set; } = new List<PassportDetail>();
 }

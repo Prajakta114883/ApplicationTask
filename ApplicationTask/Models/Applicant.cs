@@ -27,21 +27,13 @@ public partial class Applicant
 
     public string? PhoneNo { get; set; }
 
-    public string? VisaStatus { get; set; }
-
-    public string? WillingTarvalUsa { get; set; }
-
-    public string? PassportNumber { get; set; }
-
-    public DateOnly? PassportIssu { get; set; }
-
-    public DateOnly? PassportExpireDate { get; set; }
-
     public virtual ICollection<Achievement> Achievements { get; set; } = new List<Achievement>();
 
     public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
 
     public virtual ICollection<Certification> Certifications { get; set; } = new List<Certification>();
+
+    public virtual ICollection<Contact> Contacts { get; set; } = new List<Contact>();
 
     public virtual ICollection<Education> Educations { get; set; } = new List<Education>();
 
@@ -52,6 +44,4 @@ public partial class Applicant
     public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 
     public virtual ICollection<Seminar> Seminars { get; set; } = new List<Seminar>();
-
-    public virtual ICollection<TblReference> TblReferences { get; set; } = new List<TblReference>();
 }

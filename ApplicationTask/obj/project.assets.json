@@ -7627,11 +7627,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\praja\\source\\repos\\ApplicationTask\\ApplicationTask\\ApplicationTask.csproj",
+      "projectUniqueName": "E:\\ApplicationTask\\ApplicationTask\\ApplicationTask.csproj",
       "projectName": "ApplicationTask",
-      "projectPath": "C:\\Users\\praja\\source\\repos\\ApplicationTask\\ApplicationTask\\ApplicationTask.csproj",
+      "projectPath": "E:\\ApplicationTask\\ApplicationTask\\ApplicationTask.csproj",
       "packagesPath": "C:\\Users\\praja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\praja\\source\\repos\\ApplicationTask\\ApplicationTask\\obj\\",
+      "outputPath": "E:\\ApplicationTask\\ApplicationTask\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace ApplicationTask.Models;
 
-public partial class TblReference
+public partial class Contact
 {
-    public int ReferenceId { get; set; }
+    public int ContactId { get; set; }
 
-    public int? ApplicationId { get; set; }
+    public int? ApplicantId { get; set; }
 
     public string? Name { get; set; }
 
@@ -17,5 +17,5 @@ public partial class TblReference
 
     public string? Phone { get; set; }
 
-    public virtual Applicant? Application { get; set; }
+    public virtual Applicant? Applicant { get; set; }
 }

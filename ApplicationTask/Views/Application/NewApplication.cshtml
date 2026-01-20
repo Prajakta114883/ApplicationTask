@@ -26,7 +26,6 @@
         var seminar=[];
         var project=[];
         var achivments=[];
-        var reference=[];
           function AddQualification(){
                var qname=$("#txtderee").val();
                var course=$("#txtcourse").val();
@@ -230,23 +229,7 @@
                  $("#tblachievements").append("<tr><td>" + d.Description + "</td><td>" + d.Year + "</td></tr>");
              });
          }
-         function AddReference(){
-             var ap={
-                 "Name":$("#txtnamedesig").val(),
-                 "CurrentCompany":$("#txtrefcompany").val(),
-                 "Email":$("#txtrefemail").val(),
-                 "Phone":$("#txtcontactdetails").val()
-             };
-             reference.push(ap);
-             ClearReferencesFeilds();
-             FillReferencesFeilds();
-         }
-         function FillReferencesFeilds(){
-              $("#tblreference").empty();
-             $.each(reference,function(i,d){
-                 $("#tblreference").append("<tr><td>" + d.Name + "</td><td>" + d.CurrentCompany + "</td><td>" + d.Email + "</td><td>" + d.Phone + "</td></tr>");
-             });
-         }
+        
          function SubmitData(){
              var ap={
                   "Name": $("#textname").val(),
@@ -272,7 +255,7 @@
                   "Projects":project,
                   "Achievements": achivments,
                   "Seminars":seminar,
-                  "TblReferences":reference
+                  
             };
             $.ajax({
             url: '/Application/AddNewApplication',
@@ -727,48 +710,14 @@
                     </tr>
                 </tfoot>
             </table>
-            <h5>References</h5>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name & Designation</th>
-                        <th>Current Company</th>
-                        <th>Address</th>
-                        <th>Contact Details</th>
-                        <th>Action</th>
-                </thead>
-                <tbody id="tblreference"></tbody>
-                <tfoot>
-                    <tr>
-                        <td>
-                            <label>Name & Designation</label>
-                            <input type="text" id="txtnamedesig" class="form-control" />
-                        </td>
-                        <td>
-                            <label>CurrentCompany</label>
-                            <input type="text" id="txtrefcompany" class="form-control" />
-                        </td>
-                        <td>
-                            <label>Email</label>
-                            <input type="text" id="txtrefemail" class="form-control" />
-                        </td>
-                        <td>
-                            <label>Contact Details</label>
-                            <input type="text" id="txtcontactdetails" class="form-control" />
-                        </td>
-                        <td>
-                            <input type="button" value="+" onclick="AddReference()" class="btn-primary" />
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+
 
         <div class="row">
             <div class="col-md-12 col-md-12 d-flex justify-content-center">
                 <input type="button" value="Submit" onclick="SubmitData()" class="btn-primary"  >                
             </div>
         </div>
+    </div>
     </div>
 </body>
 </html>
